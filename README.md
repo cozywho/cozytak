@@ -4,5 +4,6 @@ consists of
 - part1.sh, 
 - part2.sh, and 
 - takserver.rpm
+
 sudo ./start.sh
 thanks
