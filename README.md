@@ -6,4 +6,5 @@ consists of
 - takserver.rpm
 
 sudo ./start.sh
+
 thanks
