@@ -25,13 +25,7 @@ sudo dnf config-manager --set-enabled powertools > /dev/null 2>&1
 
 # Install TAK Server
 echo "Installing TAK Server..."
-TAKSERVER_RPM=$(find "$SCRIPT_DIR" -name "takserver-*-release*.noarch.rpm" | head -n 1)
-if [[ -n "$TAKSERVER_RPM" ]]; then
-    sudo dnf install "$TAKSERVER_RPM" -y > /dev/null 2>&1
-else
-    echo "Error: TAK Server RPM not found in $SCRIPT_DIR."
-    exit 1
-fi
+sudo dnf install takserver* -y > /dev/null 2>&1
 
 # Apply SELinux configurations
 echo "Applying SELinux configurations..."
