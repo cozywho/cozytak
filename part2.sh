@@ -20,24 +20,24 @@ fi
 cd /opt/tak/certs
 
 # Create CA as 'tak' user
-sudo -u tak ./makeRootCa.sh
+sudo -u tak ./makeRootCa.sh </dev/null >/dev/null 2>&1
 
 # Create server cert as 'tak' user
-sudo -u tak ./makeCert.sh server takserver
+sudo -u tak ./makeCert.sh server takserver >/dev/null 2>&1
 
 # Create user cert as 'tak' user
-sudo -u tak ./makeCert.sh client user
+sudo -u tak ./makeCert.sh client user >/dev/null 2>&1
 
 # Create admin cert as 'tak' user
-sudo -u tak ./makeCert.sh client admin
+sudo -u tak ./makeCert.sh client admin >/dev/null 2>&1
 
 # Restart takserver as root (since service control requires root)
 echo "Restarting takserver service..."
-sudo systemctl restart takserver
+sudo systemctl restart takserver >/dev/null 2>&1
 
 # Authorize admin.pem cert to use admin webpage UI
 echo "Authorizing admin cert for web UI access..."
-sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
+sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem >/dev/null 2>&1
 
 FILE="/opt/tak/CoreConfig.xml"
 
@@ -46,7 +46,7 @@ if [[ -f "$FILE" ]]; then
     # Add auth="x509" after coreVersion="2" in the input _name="stdssl" line
     sudo -u $TAK_USER sed -i '/<input _name="stdssl"/s/\(coreVersion="2"\)/\1 auth="x509"/' "$FILE"
 
-    echo "Updated $FILE with auth=\"x509\" in the stdssl input line."
+    echo "Updated $FILE"
 else
     echo "File $FILE not found!"
     exit 1
