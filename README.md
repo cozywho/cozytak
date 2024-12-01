@@ -4,17 +4,25 @@ Single TAK server install for Rocky 8. consists of:
 - part2.sh, and 
 - takserver.rpm
 
-sudo ./start.sh
-
 The install consists of 3 parts
 - configuring dependencies for TAK (postgres, java, etc.) 
 - installing tak
 - configuring tak & certificates
 
-Best practice is probably:
+Instructions:
 - sudo dnf update -y
 - reboot (fully apply updates, kernel, etc.)
 - sudo chmod 777 /cozytak/*.sh 
--
+- sudo ./start.sh
+- y
+- 1, reboot
+- sudo ./start.sh
+- 2, import to firefox
+- https://localhost:8443
 
 thanks
+
+FUTURE PLANS:
+- organize start.sh to where its a tool you always come back to.
+- Part 1 & 2 for basic install. Maybe hide in a "install takserver" option and put it after the cert generation functionality when added.
+- cert generation based on user input and packaging them into importable zips.
