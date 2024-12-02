@@ -26,3 +26,4 @@ FUTURE PLANS:
 - organize start.sh to where its a tool you always come back to.
 - Part 1 & 2 for basic install. Maybe hide in a "install takserver" option and put it after the cert generation functionality when added.
 - cert generation based on user input and packaging them into importable zips.
+- existing server upgrade capability.
