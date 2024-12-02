@@ -12,7 +12,7 @@ The install consists of 3 parts
 Instructions:
 - sudo dnf update -y
 - reboot (fully apply updates, kernel, etc.)
-- sudo chmod 777 /cozytak/*.sh 
+- sudo chmod +x /cozytak/*.sh 
 - sudo ./start.sh
 - y
 - 1, reboot
