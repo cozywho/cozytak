@@ -24,8 +24,10 @@ thanks
 
 FUTURE PLANS:
 - organize start.sh to where its a tool you always come back to.
-- Part 1 & 2 for basic install. Maybe hide in a "install takserver" option and put it after the cert generation functionality when added.
+- consolidate part1 & 2.
 - cert generation based on user input and packaging them into importable zips.
-- multi OS support.
+- multi OS support (Ubuntu & Docker)
 - Add existing server upgrade capability to the start menu. If you wanna upgrade just ./upgrade.sh.
-- auto add the admin.p12 to the local firefox certs.
+- auto add the admin.p12 to the local firefox certs. Idk how to approach this.
+- add option during cert-metadata.sh to use default password, or custom password.
+- 
