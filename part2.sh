@@ -41,6 +41,7 @@ sudo systemctl restart takserver >/dev/null 2>&1
 
 # Authorize admin.pem cert to use admin webpage UI
 echo "Authorizing admin cert for web UI access..."
+cd /opt/tak/utils/
 sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem >/dev/null 2>&1
 
 FILE="/opt/tak/CoreConfig.xml"
