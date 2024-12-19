@@ -39,16 +39,16 @@ sudo -u tak ./makeCert.sh client admin >/dev/null 2>&1
 echo "Restarting takserver."
 sudo systemctl restart takserver >/dev/null 2>&1
 
-FILE="/opt/tak/CoreConfig.xml"
+FILE2="/opt/tak/CoreConfig.xml"
 
 # Ensure the file exists before attempting to modify it
-if [[ -f "$FILE" ]]; then
+if [[ -f "$FILE2" ]]; then
     # Add auth="x509" after coreVersion="2" in the input _name="stdssl" line
-    sudo -u tak sed -i '/<input _name="stdssl"/s/\(coreVersion="2"\)/\1 auth="x509"/' "$FILE"
+    sudo -u tak sed -i '/<input _name="stdssl"/s/\(coreVersion="2"\)/\1 auth="x509"/' "$FILE2"
 
-    echo "Updated $FILE"
+    echo "Updated $FILE2"
 else
-    echo "File $FILE not found!"
+    echo "File $FILE2 not found!"
     exit 1
 fi
 
