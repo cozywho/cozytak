@@ -21,23 +21,23 @@ cd /opt/tak/certs
 
 # Create CA as 'tak' user
 echo "Creating Root CA"
-sudo -u tak ./makeRootCa.sh </dev/null >/dev/null 2>&1
+sudo -u tak ./makeRootCa.sh </dev/null
 
 # Create server cert as 'tak' user
 echo "Creating server cert."
-sudo -u tak ./makeCert.sh server takserver >/dev/null 2>&1
+sudo -u tak ./makeCert.sh server takserver
 
 # Create user cert as 'tak' user
 echo "Creating user cert."
-sudo -u tak ./makeCert.sh client user >/dev/null 2>&1
+sudo -u tak ./makeCert.sh client user
 
 # Create admin cert as 'tak' user
 echo "Creating admin cert."
-sudo -u tak ./makeCert.sh client admin >/dev/null 2>&1
+sudo -u tak ./makeCert.sh client admin
 
 # Restart takserver as root (since service control requires root)
 echo "Restarting takserver."
-sudo systemctl restart takserver >/dev/null 2>&1
+sudo systemctl restart takserver
 
 FILE2="/opt/tak/CoreConfig.xml"
 
