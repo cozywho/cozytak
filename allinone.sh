@@ -9,35 +9,35 @@ echo -e "*		hard	nofile		32768" | sudo tee --append /etc/security/limits.conf > 
 
 # Install EPEL repository
 echo "Installing EPEL repository..."
-sudo dnf install epel-release -y
+sudo dnf install epel-release -y > /dev/null 2>&1
 
 # Add PostgreSQL repository and disable default module
 echo "Adding PostgreSQL repository..."
-sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-sudo dnf -qy module disable postgresql && sudo dnf update -y
+sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm > /dev/null 2>&1
+sudo dnf -qy module disable postgresql && sudo dnf update -y > /dev/null 2>&1
 
 # Install Java
 echo "Installing Java..."
-sudo dnf install java-17-openjdk-devel -y
+sudo dnf install java-17-openjdk-devel -y > /dev/null 2>&1
 
 # Enable powertools repository
 echo "Enabling powertools repository..."
-sudo dnf config-manager --set-enabled powertools
+sudo dnf config-manager --set-enabled powertools > /dev/null 2>&1
 
 # Install TAK Server
 echo "Installing TAK Server..."
-sudo dnf install takserver-* -y
+sudo dnf install takserver-* -y > /dev/null 2>&1
 
 # Apply SELinux configurations
 echo "Applying SELinux configurations..."
-sudo dnf install checkpolicy
+sudo dnf install checkpolicy > /dev/null 2>&1
 cd /opt/tak
-sudo ./apply-selinux.sh && sudo semodule -l | grep takserver
+sudo ./apply-selinux.sh && sudo semodule -l | grep takserver > /dev/null 2>&1
 
 # Start and enable TAK Server service
 echo "Starting TAK Server service..."
-sudo systemctl daemon-reload
-sudo systemctl enable takserver && sudo systemctl start takserver
+sudo systemctl daemon-reload > /dev/null 2>&1
+sudo systemctl enable takserver && sudo systemctl start takserver > /dev/null 2>&1
 
 # --------------------------------
 # PART 2: CERT GENERATION & CONFIG
@@ -64,7 +64,7 @@ cd /opt/tak/certs
 
 # Create CA as 'tak' user
 echo "Creating Root CA"
-sudo -u tak ./makeRootCa.sh
+sudo -u tak ./makeRootCa.sh > /dev/null 2>&1
 
 # Create server cert as 'tak' user
 echo "Creating server cert."
