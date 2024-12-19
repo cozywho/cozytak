@@ -8,7 +8,7 @@ echo "Starting Part 1: New Install - One Server"
 #echo -e "*		hard	nofile		32768" | sudo tee --append /etc/security/limits.conf > /dev/null
 
 if ! grep -q "soft[[:space:]]*nofile[[:space:]]*32768" /etc/security/limits.conf; then
-    echo "Increasing TCP connection system limit"
+    echo "Increasing TCP connection system limit..."
     echo -e "*\tsoft\tnofile\t32768" | sudo tee --append /etc/security/limits.conf > /dev/null
     echo -e "*\thard\tnofile\t32768" | sudo tee --append /etc/security/limits.conf > /dev/null
 else
@@ -89,42 +89,33 @@ cd /opt/tak/certs
 
 # Create CA as 'tak' user
 echo "Creating Root CA"
-sudo -u tak ./makeRootCa.sh </dev/null
+sudo -u tak ./makeRootCa.sh </dev/null > /dev/null 2>&1
 
 # Create server cert as 'tak' user
 echo "Creating server cert."
-sudo -u tak ./makeCert.sh server takserver
+sudo -u tak ./makeCert.sh server takserver > /dev/null 2>&1
 
 # Create user cert as 'tak' user
 echo "Creating user cert."
-sudo -u tak ./makeCert.sh client user
+sudo -u tak ./makeCert.sh client user > /dev/null 2>&1
 
 # Create admin cert as 'tak' user
 echo "Creating admin cert."
-sudo -u tak ./makeCert.sh client admin
+sudo -u tak ./makeCert.sh client admin > /dev/null 2>&1
 
 # Restart takserver as root (since service control requires root)
 echo "Restarting takserver."
-sudo systemctl restart takserver
+sudo systemctl restart takserver > /dev/null 2>&1
 
-FILE2="/opt/tak/CoreConfig.xml"
-
-# Ensure the file exists before attempting to modify it
-if [[ -f "$FILE2" ]]; then
-    # Add auth="x509" after coreVersion="2" in the input _name="stdssl" line
-    sudo -u tak sed -i '/<input _name="stdssl"/s/\(coreVersion="2"\)/\1 auth="x509"/' "$FILE2"
-
-    echo "Updated $FILE2"
-else
-    echo "File $FILE2 not found!"
-    exit 1
-fi
+# Modifying CoreConfig.xml
+echo "Modifying CoreConfig.xml"
+sudo -u tak sed -i '/<input _name="stdssl"/s/\(coreVersion="2"\)/\1 auth="x509"/' "/opt/tak/CoreConfig.xml" > /dev/null
 
 # Restart takserver after configuration changes
 echo "Restarting takserver."
-sudo systemctl restart takserver
-echo "Execute adminauth.sh then manually install the admin cert into Firefox to access the web UI on https://localhost:8443"
-
+sudo systemctl restart takserver > /dev/null 2>&1
+echo "Execute that stupid fucking java command first."
+echo "Then manually install the admin cert into Firefox to access the web UI on https://localhost:8443"
 # sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
 
 # Store script directory value
