@@ -3,9 +3,17 @@
 echo "Starting Part 1: New Install - One Server"
 
 # Increase system limit for number of concurrent TCP connections
-echo "Increasing TCP connection system limit"
-echo -e "*		soft	nofile		32768" | sudo tee --append /etc/security/limits.conf > /dev/null
-echo -e "*		hard	nofile		32768" | sudo tee --append /etc/security/limits.conf > /dev/null
+#echo "Increasing TCP connection system limit"
+#echo -e "*		soft	nofile		32768" | sudo tee --append /etc/security/limits.conf > /dev/null
+#echo -e "*		hard	nofile		32768" | sudo tee --append /etc/security/limits.conf > /dev/null
+
+if ! grep -q "soft[[:space:]]*nofile[[:space:]]*32768" /etc/security/limits.conf; then
+    echo "Increasing TCP connection system limit"
+    echo -e "*\tsoft\tnofile\t32768" | sudo tee --append /etc/security/limits.conf > /dev/null
+    echo -e "*\thard\tnofile\t32768" | sudo tee --append /etc/security/limits.conf > /dev/null
+else
+    echo "TCP connection system limit already set."
+fi
 
 # Install EPEL repository
 echo "Installing EPEL repository..."
