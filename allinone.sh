@@ -99,20 +99,18 @@ fi
 echo "Restarting takserver."
 sudo systemctl restart takserver
 
-cd /home/gsu-admin/cozytak/
-
-sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
+# sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
 
 # Store script directory value
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Copy admin cert to cozytak folder for user to import.
 # sudo cp /opt/tak/certs/files/admin.pem "$SCRIPT_DIR/admin.pem" && sudo chown $(whoami):$(whoami) "$SCRIPT_DIR/admin.pem"
-sudo cp /opt/tak/certs/files/admin.p12 "$SCRIPT_DIR/admin.p12" && sudo chmod 777 "$SCRIPT_DIR/admin.p12" 
+# sudo cp /opt/tak/certs/files/admin.p12 "$SCRIPT_DIR/admin.p12" && sudo chmod 777 "$SCRIPT_DIR/admin.p12" 
 
 # Note on Firefox certificate installation (manual step)
-echo "Please manually install the admin.p12 cert into Firefox to access the web UI."
-echo "Located at $SCRIPT_DIR/admin.p12"
+echo "Please manually install the admin.p12 cert into Firefox to access the web UI after running that stupid fucking java command."
+# echo "Located at $SCRIPT_DIR/admin.p12"
 echo ""
 echo "https://localhost:8443"
 echo ""
