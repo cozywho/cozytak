@@ -39,11 +39,6 @@ sudo -u tak ./makeCert.sh client admin >/dev/null 2>&1
 echo "Restarting takserver."
 sudo systemctl restart takserver >/dev/null 2>&1
 
-# Authorize admin.pem cert to use admin webpage UI
-echo "Authorizing admin cert for web UI access..."
-cd /opt/tak/utils/
-sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem >/dev/null 2>&1
-
 FILE="/opt/tak/CoreConfig.xml"
 
 # Ensure the file exists before attempting to modify it
@@ -60,6 +55,4 @@ fi
 # Restart takserver after configuration changes
 echo "Restarting takserver."
 sudo systemctl restart takserver
-
-# Note on Firefox certificate installation (manual step)
-echo "Please manually install the admin cert into Firefox to access the web UI on https://localhost:8443"
+echo "Execute adminauth.sh then manually install the admin cert into Firefox to access the web UI on https://localhost:8443"
