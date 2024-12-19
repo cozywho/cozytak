@@ -37,7 +37,7 @@ sudo dnf config-manager --set-enabled powertools > /dev/null 2>&1
 
 # Install TAK Server
 echo "Installing TAK Server..."
-sudo dnf install takserver-* -y > /dev/null
+sudo dnf install takserver-* -y > /dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Error: Failed to install TAK Server. Exiting."
     exit 1
@@ -52,7 +52,7 @@ sudo ./apply-selinux.sh && sudo semodule -l | grep takserver > /dev/null 2>&1
 # Start and enable TAK Server service
 echo "Starting TAK Server service..."
 sudo systemctl daemon-reload > /dev/null 2>&1
-sudo systemctl enable takserver && sudo systemctl start takserver > /dev/null 2>&1
+sudo systemctl enable takserver > /dev/null 2>&1 && sudo systemctl start takserver > /dev/null 2>&1
 
 # Verify TAK Server service status
 if systemctl is-active --quiet takserver; then
