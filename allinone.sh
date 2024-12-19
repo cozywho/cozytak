@@ -64,7 +64,7 @@ cd /opt/tak/certs
 
 # Create CA as 'tak' user
 echo "Creating Root CA"
-sudo -u tak ./makeRootCa.sh > /dev/null 2>&1
+sudo -u tak ./makeRootCa.sh </dev/null >/dev/null 2>&1
 
 # Create server cert as 'tak' user
 echo "Creating server cert."
