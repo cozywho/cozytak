@@ -23,6 +23,7 @@ sudo dnf install epel-release -y > /dev/null 2>&1
 echo "Adding PostgreSQL repository..."
 sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm > /dev/null 2>&1
 sudo dnf -qy module disable postgresql > /dev/null 2>&1
+
 # Update system
 echo "Updating the system (this may take a while)..."
 sudo dnf update -y > /dev/null 2>&1
@@ -110,6 +111,8 @@ sudo systemctl restart takserver > /dev/null 2>&1
 # Modifying CoreConfig.xml
 echo "Modifying CoreConfig.xml"
 sudo -u tak sed -i '/<input _name="stdssl"/s/\(coreVersion="2"\)/\1 auth="x509"/' "/opt/tak/CoreConfig.xml" > /dev/null
+
+# ADD A PORTION HERE ABOUT MODIFYING THE DEFAULT PASSWORD
 
 # Restart takserver after configuration changes
 echo "Restarting takserver."
