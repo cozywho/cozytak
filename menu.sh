@@ -25,23 +25,24 @@ fi
 # Provide options for Part 1 or Part 2
 echo
 echo "Select an option:"
-echo "1. Part 1: New Install - One Server"
-echo "2. Part 2: Certificates (Appendix B)"
+echo "1. New Install - One Server"
+echo "2. Upgrade existing TAK server"
+echo "3. Certificate Generator (Drag & Drop)"
 echo "3. Exit"
 read -p "Enter your choice (1/2/3): " choice
 
 case $choice in
     1)
-        echo "Executing Part 1: New Install - One Server..."
-        if [[ -f "$SCRIPT_DIR/part1.sh" ]]; then
-            bash "$SCRIPT_DIR/part1.sh"
+        echo "Executing New Install - One Server..."
+        if [[ -f "$SCRIPT_DIR/install.sh" ]]; then
+            bash "$SCRIPT_DIR/install.sh"
         else
-            echo "Error: part1.sh not found in $SCRIPT_DIR."
+            echo "Error: install.sh not found in $SCRIPT_DIR."
             exit 1
         fi
         ;;
     2)
-        echo "Executing Part 2: Certificates (Appendix B)..."
+        echo "Executing TAK Server Upgrade..."
         if [[ -f "$SCRIPT_DIR/part2.sh" ]]; then
             bash "$SCRIPT_DIR/part2.sh"
         else
