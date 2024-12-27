@@ -117,19 +117,20 @@ sudo -u tak sed -i '/<input _name="stdssl"/s/\(coreVersion="2"\)/\1 auth="x509"/
 # Restart takserver after configuration changes
 echo "Restarting takserver."
 sudo systemctl restart takserver > /dev/null 2>&1
-echo "Execute that stupid fucking java command first."
+sleep 15
+#echo "Execute that stupid fucking java command first."
 
-echo "---------------------------------------------------------------------------------------"
-echo "sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem"
-echo "---------------------------------------------------------------------------------------"
+#echo "---------------------------------------------------------------------------------------"
+#echo "sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem"
+#echo "---------------------------------------------------------------------------------------"
 
-echo "Move /opt/tak/certs/files/admin.p12 to cozytak."
-echo "Then manually install the admin cert into Firefox to access the web UI on https://localhost:8443"
-# sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
+#echo "Move /opt/tak/certs/files/admin.p12 to cozytak."
+#echo "Then manually install the admin cert into Firefox to access the web UI on https://localhost:8443"
+sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
 
 # Store script directory value
 # SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Copy admin cert to cozytak folder for user to import.
+Copy admin cert to cozytak folder for user to import.
 # sudo cp /opt/tak/certs/files/admin.pem "$SCRIPT_DIR/admin.pem" && sudo chown $(whoami):$(whoami) "$SCRIPT_DIR/admin.pem"
 # sudo cp /opt/tak/certs/files/admin.p12 "$SCRIPT_DIR/admin.p12" && sudo chmod 777 "$SCRIPT_DIR/admin.p12" 
