@@ -1,23 +1,21 @@
+git clone https://github.com/cozywho/cozytak
 
-Instructions:
-- sudo dnf update -y
-- reboot (fully apply updates, kernel, etc.)
-- sudo chmod +x /cozytak/*.sh 
-- sudo ./start.sh
-- y
-- 1, reboot
-- sudo ./start.sh
-- 2, import to firefox
-- https://localhost:8443
+replace the real takserver.rpm with the placeholder in cozytak
+
+sudo dnf update -y
+reboot (fully apply updates, kernel, etc.)
+sudo chmod +x /cozytak/*.sh 
+sudo menu.sh
+2, import to firefox
+https://localhost:8443
 
 thanks
 
 FUTURE PLANS:
-- organize start.sh to where its a tool you always come back to.
-- consolidate part1 & 2.
+- make cozytak a command, taking you to the menu.
+- add arguments for install, upgrade, certgen. ex: cozytak --install (idk about this)
+- organize the menu better, indending for certgen to be a repeatable tool.
 - cert generation based on user input and packaging them into importable zips.
 - multi OS support (Ubuntu & Docker)
-- Add existing server upgrade capability to the start menu. If you wanna upgrade just ./upgrade.sh.
 - auto add the admin.p12 to the local firefox certs. Idk how to approach this.
 - add option during cert-metadata.sh to use default password, or custom password.
-- 
