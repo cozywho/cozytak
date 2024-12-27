@@ -63,8 +63,6 @@ else
     exit 1
 fi
 
-echo "Part 1 complete."
-
 # --------------------------------
 # PART 2: CERT GENERATION & CONFIG
 # --------------------------------
