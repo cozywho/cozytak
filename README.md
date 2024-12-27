@@ -1,6 +1,6 @@
 git clone https://github.com/cozywho/cozytak
 
-replace the real takserver.rpm with the placeholder in cozytak
+replace the placeholder takserver.rpm in cozytak/ with the real one.
 
 - sudo dnf update -y
 - reboot (fully apply updates, kernel, etc.)
