@@ -34,10 +34,10 @@ read -p "Enter your choice (1/2/3): " choice
 case $choice in
     1)
         echo "Executing New Install - One Server..."
-        if [[ -f "$SCRIPT_DIR/install.sh" ]]; then
-            source "$SCRIPT_DIR/install.sh"
+        if [[ -f "$SCRIPT_DIR/singleserver.sh" ]]; then
+            source "$SCRIPT_DIR/singleserver.sh"
         else
-            echo "Error: install.sh not found in $SCRIPT_DIR."
+            echo "Error: singleserver.sh not found in $SCRIPT_DIR."
             exit 1
         fi
         ;;
