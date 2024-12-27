@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Starting "Existing Server Upgrade - One Server""
+echo "Starting "Executing Server Upgrade - One Server""
 
 # Install EPEL repository
 echo "Verifying EPEL repository..."
