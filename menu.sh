@@ -44,7 +44,7 @@ case $choice in
     2)
         echo "Executing TAK Server Upgrade..."
         if [[ -f "$SCRIPT_DIR/upgrade.sh" ]]; then
-            souce "$SCRIPT_DIR/upgrade.sh"
+            source "$SCRIPT_DIR/upgrade.sh"
         else
             echo "Error: part2.sh not found in $SCRIPT_DIR."
             exit 1
