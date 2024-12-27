@@ -46,11 +46,20 @@ case $choice in
         if [[ -f "$SCRIPT_DIR/upgrade.sh" ]]; then
             source "$SCRIPT_DIR/upgrade.sh"
         else
-            echo "Error: part2.sh not found in $SCRIPT_DIR."
+            echo "Error: upgrade.sh not found in $SCRIPT_DIR."
             exit 1
         fi
         ;;
-    3)
+    2)
+        echo "Cert Generation..."
+        if [[ -f "$SCRIPT_DIR/certgen.sh" ]]; then
+            source "$SCRIPT_DIR/certgen.sh"
+        else
+            echo "Error: certgen.sh not found in $SCRIPT_DIR."
+            exit 1
+        fi
+        ;;
+    4)
         echo "Exiting."
         exit 0
         ;;
