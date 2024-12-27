@@ -35,7 +35,7 @@ case $choice in
     1)
         echo "Executing New Install - One Server..."
         if [[ -f "$SCRIPT_DIR/install.sh" ]]; then
-            bash "$SCRIPT_DIR/install.sh"
+            source "$SCRIPT_DIR/install.sh"
         else
             echo "Error: install.sh not found in $SCRIPT_DIR."
             exit 1
@@ -43,8 +43,8 @@ case $choice in
         ;;
     2)
         echo "Executing TAK Server Upgrade..."
-        if [[ -f "$SCRIPT_DIR/part2.sh" ]]; then
-            bash "$SCRIPT_DIR/part2.sh"
+        if [[ -f "$SCRIPT_DIR/upgrade.sh" ]]; then
+            souce "$SCRIPT_DIR/upgrade.sh"
         else
             echo "Error: part2.sh not found in $SCRIPT_DIR."
             exit 1
