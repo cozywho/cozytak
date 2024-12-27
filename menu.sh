@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# TAK Single Server Install Script - Start
+# cozytak menu 
 
 # Determine the directory the script is being run from
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -8,16 +8,13 @@ echo "Script directory: $SCRIPT_DIR"
 
 # Confirm prerequisites
 echo ""
-echo "TAK Single Server Install"
+echo "Welcome to cozytak. Get comfortable."
 echo "Ensure you meet the following prerequisites:"
 echo "1. Logged in as your created admin user."
 echo "2. Working internet connection (offline install not supported)."
 echo "3. Run 'sudo dnf update -y' and reboot if there are kernel updates."
-echo "4. The following files are in $SCRIPT_DIR:"
-echo " - part1.sh"
-echo " - part2.sh"
-echo " - takserver.rpm"
-echo ""
+echo "4. The correct takserver.rpm is in $SCRIPT_DIR:"
+
 read -p "Are you ready to proceed? (y/n): " ready
 
 if [[ "${ready,,}" != "y" ]]; then
