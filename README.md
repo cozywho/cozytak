@@ -2,12 +2,13 @@ git clone https://github.com/cozywho/cozytak
 
 replace the real takserver.rpm with the placeholder in cozytak
 
-sudo dnf update -y
-reboot (fully apply updates, kernel, etc.)
-sudo chmod +x /cozytak/*.sh 
-sudo menu.sh
-2, import to firefox
-https://localhost:8443
+- sudo dnf update -y
+- reboot (fully apply updates, kernel, etc.)
+- sudo chmod +x /cozytak/*.sh 
+- sudo menu.sh
+- install accordingly
+- import certs to firefox
+- https://localhost:8443
 
 thanks
 
