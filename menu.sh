@@ -28,8 +28,8 @@ echo "Select an option:"
 echo "1. New Install - One Server"
 echo "2. Upgrade existing TAK server"
 echo "3. Certificate Generator (Drag & Drop)"
-echo "3. Exit"
-read -p "Enter your choice (1/2/3): " choice
+echo "4. Exit"
+read -p "Enter your choice (1/2/3/4): " choice
 
 case $choice in
     1)
