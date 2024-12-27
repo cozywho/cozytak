@@ -1,6 +1,7 @@
 git clone https://github.com/cozywho/cozytak
 
 run this command:
+``
 
 replace the placeholder takserver.rpm in cozytak/ with the real one.
 
