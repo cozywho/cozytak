@@ -10,7 +10,7 @@ replace the placeholder takserver.rpm in cozytak/ with the real one.
 - sudo chmod +x /cozytak/*.sh 
 - sudo menu.sh
 - install accordingly
-- import certs to firefox
+- import certs to browser
 - https://localhost:8443
 
 thanks
