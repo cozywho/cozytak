@@ -14,6 +14,7 @@ echo "1. New Install - One Server"
 echo "2. Upgrade existing TAK server"
 echo "-----------------------------------"
 echo "3. Certificate Generator (Drag & Drop)"
+echo "-----------------------------------"
 echo "4. Exit"
 read -p "Enter your choice (1/2/3/4): " choice
 
