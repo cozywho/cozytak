@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Starting Single Server Install"
+echo "Starting Single Server Install..."
 
 # Increase system limit for number of concurrent TCP connections
 #echo "Increasing TCP connection system limit"
@@ -57,7 +57,7 @@ sudo systemctl enable takserver > /dev/null 2>&1 && sudo systemctl start takserv
 
 # Verify TAK Server service status
 if systemctl is-active --quiet takserver; then
-    echo "TAK Server is running successfully."
+    echo "TAK Server is running successfully..."
 else
     echo "Error: TAK Server failed to start. Check logs for details."
     exit 1
@@ -87,33 +87,33 @@ fi
 cd /opt/tak/certs
 
 # Create CA as 'tak' user
-echo "Creating Root CA"
+echo "Creating Root CA..."
 sudo -u tak ./makeRootCa.sh </dev/null > /dev/null 2>&1
 
 # Create server cert as 'tak' user
-echo "Creating server cert."
+echo "Creating server cert..."
 sudo -u tak ./makeCert.sh server takserver > /dev/null 2>&1
 
 # Create user cert as 'tak' user
-echo "Creating user cert."
+echo "Creating user cert..."
 sudo -u tak ./makeCert.sh client user > /dev/null 2>&1
 
 # Create admin cert as 'tak' user
-echo "Creating admin cert."
+echo "Creating admin cert..."
 sudo -u tak ./makeCert.sh client admin > /dev/null 2>&1
 
 # Restart takserver as root (since service control requires root)
-echo "Restarting takserver."
+echo "Restarting takserver..."
 sudo systemctl restart takserver > /dev/null 2>&1
 
 # Modifying CoreConfig.xml
-echo "Modifying CoreConfig.xml"
+echo "Modifying CoreConfig.xml..."
 sudo -u tak sed -i '/<input _name="stdssl"/s/\(coreVersion="2"\)/\1 auth="x509"/' "/opt/tak/CoreConfig.xml" > /dev/null
 
 # ADD A PORTION HERE ABOUT MODIFYING THE DEFAULT PASSWORD
 
 # Restart takserver after configuration changes
-echo "Restarting takserver."
+echo "Restarting takserver..."
 sudo systemctl restart takserver > /dev/null 2>&1
 sleep 15
 #sudo systemctl status takserver
@@ -125,11 +125,11 @@ sleep 15
 
 #echo "Move /opt/tak/certs/files/admin.p12 to cozytak."
 #echo "Then manually install the admin cert into Firefox to access the web UI on https://localhost:8443"
-sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
+#sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
 
 # Store script directory value
 # SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
+echo "Do that stupid fucking java command in the readme, i cant figure out how to get it to work inside the script."
 echo "Copy admin cert to cozytak folder for user to import."
 # sudo cp /opt/tak/certs/files/admin.pem "$SCRIPT_DIR/admin.pem" && sudo chown $(whoami):$(whoami) "$SCRIPT_DIR/admin.pem"
 # sudo cp /opt/tak/certs/files/admin.p12 "$SCRIPT_DIR/admin.p12" && sudo chmod 777 "$SCRIPT_DIR/admin.p12" 
