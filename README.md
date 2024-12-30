@@ -6,6 +6,7 @@
 sudo dnf update -y
 reboot
 git clone https://github.com/cozywho/cozytak
+cd cozytak/
 source install.sh
 mv takserver-*.rpm /opt/cozytak/ && rm /opt/cozytak/takserver.rpm
 
