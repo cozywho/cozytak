@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Define necessary paths
-CERT_DIR="/opt/tak/certs/files"
-COZYTAK_DIR="$(pwd)"
-COZYTAK_CERTS_DIR="$COZYTAK_DIR/certs"
-DEPENDENCY_FILES=("manifest.xml" "package_builder.pref")
-TRUSTSTORE_ROOT="$CERT_DIR/truststore-root.p12"
-
-# Ensure necessary directories exist
-mkdir -p "$COZYTAK_CERTS_DIR"
-
 while true; do
     # Prompt for username
     read -p "Enter username for the cert: " USERNAME
@@ -26,14 +16,12 @@ done
 ./opt/tak/certs/makeCert.sh "$USERNAME"
 
 # Check if the .p12 file was successfully created
-if [ ! -e "$CERT_DIR/$USERNAME.p12" ]; then
+if [ ! -e "opt/tak/certs/files/$USERNAME.p12" ]; then
     echo "Error: Certificate generation failed for '$USERNAME'."
     exit 1
 fi
 
-# Create a folder for the new cert in cozytak/certs
-USER_CERT_DIR="$COZYTAK_CERTS_DIR/$USERNAME"
-mkdir -p "$USER_CERT_DIR"
+mkdir -p home/$user/cozytak/certs
 
 # Copy the required files to the user's folder
 cp "$CERT_DIR/$USERNAME.p12" "$USER_CERT_DIR/"
