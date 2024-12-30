@@ -12,7 +12,7 @@
 
 thanks
 
-Sometimes java throws a fit and the admin cert auth doesnt take. If so just run this, admin.pem being what you want to give admin rights to. 
+- Sometimes java throws a fit and the admin cert auth doesnt take. If so just run this, admin.pem being what you want to give admin rights to. 
 ---------------------------------------------------------------------------------------
 sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
 ---------------------------------------------------------------------------------------
