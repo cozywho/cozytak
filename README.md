@@ -1,27 +1,64 @@
-- sudo dnf update -y
-- reboot (fully apply updates, kernel, etc.)
-- git clone https://github.com/cozywho/cozytak
-- mv takserver-*.rpm cozytak/ && rm cozytak/takserver.rpm
-  - replace the placeholder takserver.rpm in cozytak/ with the real one.
-- cd cozytak/
-- sudo chmod +x *.sh 
-- source menu.sh
-- install accordingly
-- import certs to browser
-- https://localhost:8443
+# CozyTAK Installation Guide
 
-thanks
+## Installation Steps
 
-- Sometimes java throws a fit and the admin cert auth doesnt take. If so just run this, admin.pem being what you want to give admin rights to. 
----------------------------------------------------------------------------------------
+### Update and Reboot System
+```bash
+sudo dnf update -y
+reboot
+```
+> Fully apply updates, including kernel updates.
+
+### Clone the Repository
+```bash
+git clone https://github.com/cozywho/cozytak
+```
+
+### Prepare TAKServer RPM
+```bash
+mv takserver-*.rpm cozytak/ && rm cozytak/takserver.rpm
+```
+> Replace the placeholder `takserver.rpm` in `cozytak/` with the real one.
+
+### Navigate to CozyTAK Directory
+```bash
+cd cozytak/
+```
+
+### Set Script Permissions
+```bash
+sudo chmod +x *.sh
+```
+
+### Source the Menu Script
+```bash
+source menu.sh
+```
+
+### Install Accordingly
+Follow the menu options to complete the installation.
+
+### Import Certificates to Browser
+Access the admin interface at:
+```
+https://localhost:8443
+```
+
+### Troubleshooting
+Sometimes, Java throws an error, and the admin certificate authentication fails. If this happens, run the following command:
+
+```bash
 sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
----------------------------------------------------------------------------------------
+```
+Replace `admin.pem` with the certificate you want to give admin rights to.
 
-FUTURE PLANS:
-- make cozytak a command, taking you to the menu.
-- add arguments for install, upgrade, certgen. ex: cozytak --install (idk about this)
-- organize the menu better, indending for certgen to be a repeatable tool.
-- cert generation based on user input and packaging them into importable zips.
-- multi OS support (Ubuntu & Docker)
-- auto add the admin.p12 to the local firefox certs. Idk how to approach this.
-- add option during cert-metadata.sh to use default password, or custom password.
+## Future Plans
+- Create a `cozytak` command to launch the menu directly.
+- Add arguments for commands like `install`, `upgrade`, and `certgen` (e.g., `cozytak --install`).
+- Improve menu organization, especially for making certificate generation repeatable.
+- Enable user-input-based certificate generation and package certificates into importable zips.
+- Add support for multi-OS environments (e.g., Ubuntu and Docker).
+- Automate the addition of `admin.p12` to local Firefox certificates.
+- Provide an option during `cert-metadata.sh` to use a default or custom password.
+
+---
