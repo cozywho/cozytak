@@ -11,7 +11,7 @@ chmod +x cozytak/*.sh && cd cozytak
 source menu.sh
 ```
 
-import certificates into your browser and access the interface at:
+import opt/tak/certs/files/admin.p12 into your browser and access the interface at:
 ```
 https://localhost:8443
 ```
