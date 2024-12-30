@@ -18,14 +18,6 @@ read -p "Enter your choice (1/2/3/4): " choice
 
 case $choice in
     1)
-        echo "Executing New Install - One Server..."
-        echo
-        echo "Ensure you meet the following prerequisites:"
-        echo "1. Logged in as your created admin user."
-        echo "2. Working internet connection (offline install not supported)."
-        echo "3. Run 'sudo dnf update -y' and reboot if there are kernel updates."
-        echo "4. The correct takserver.rpm is in $SCRIPT_DIR:"
-
         read -p "Are you ready to proceed? (y/n): " ready
 
         if [[ "${ready,,}" != "y" ]]; then
