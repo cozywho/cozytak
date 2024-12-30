@@ -6,9 +6,9 @@
 sudo dnf update -y
 reboot
 git clone https://github.com/cozywho/cozytak
-mv takserver-*.rpm cozytak/ && rm cozytak/takserver.rpm
-chmod +x cozytak/*.sh && cd cozytak
-source menu.sh
+source install.sh
+mv takserver-*.rpm /opt/cozytak/ && rm /opt/cozytak/takserver.rpm
+
 ```
 
 import opt/tak/certs/files/admin.p12 into your browser and access the interface at:
