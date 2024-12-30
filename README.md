@@ -9,7 +9,7 @@ git clone https://github.com/cozywho/cozytak
 cd cozytak/
 source install.sh
 mv takserver-*.rpm /opt/cozytak/ && rm /opt/cozytak/takserver.rpm
-
+cozytak
 ```
 
 import opt/tak/certs/files/admin.p12 into your browser and access the interface at:
