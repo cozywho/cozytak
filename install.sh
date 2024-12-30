@@ -1,9 +1,4 @@
 #!/bin/bash
-Check if the script is run as root
-if [ "$(id -u)" -ne 0 ]; then
-    echo "Please run as root"
-   exit 1
-fi
 
 # Move dependencies to somewhere like /opt/cozytak or something.
 chmod +x *.sh
