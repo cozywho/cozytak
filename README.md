@@ -23,7 +23,7 @@ sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/ad
 sudo cp /opt/tak/certs/files/admin.p12 whereveryouwant/
 sudo chmod 777 admin.p12
 ```
-replace `admin.pem` with the desired admin certificate.
+replace `admin.pem/p12` with the desired admin certificate.
 - i cant figure out how to get this to succeed in if ran inside of the script. someone plz help.
 
 ## future plans
