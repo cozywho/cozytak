@@ -7,11 +7,11 @@ fi
 
 # Move dependencies to somewhere like /opt/cozytak or something.
 chmod +x *.sh
-sudo mkdir opt/cozytak
-sudo mv !(install).sh /opt/cozytak
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+sudo mv cozytak /opt/
 
 # Move the menu script to /usr/local/bin/ and change script to call on dependencies in opt/tak
-cp menu.sh /usr/local/bin/cozytak
+cp /opt/cozytak/menu.sh /usr/local/bin/cozytak
 
 # Make the script executable
 chmod +x /usr/local/bin/cozytak
