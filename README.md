@@ -1,4 +1,5 @@
-git clone https://github.com/cozywho/cozytak
+- git clone https://github.com/cozywho/cozytak
+- mv takserver-*.rpm cozytak/
 
 run this command:
 ``
