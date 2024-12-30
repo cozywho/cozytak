@@ -20,7 +20,7 @@ https://localhost:8443
 if admin certificate authentication fails, run:
 ```bash
 sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
-sudo cp /opt/tak/certs/files/admin.p12 */cozytak/certs
+sudo cp /opt/tak/certs/files/admin.p12 */cozytak/certs/
 ```
 replace `admin.pem` with the desired admin certificate.
 - i cant figure out how to get this to succeed in if ran inside of the script. someone plz help.
