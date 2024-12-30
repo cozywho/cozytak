@@ -7,6 +7,7 @@ fi
 
 # Move dependencies to somewhere like /opt/cozytak or something.
 chmod +x *.sh
+mkdir certs
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 sudo mv cozytak /opt/
 
