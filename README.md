@@ -24,7 +24,7 @@ sudo cp /opt/tak/certs/files/admin.p12 whereveryouwant/
 sudo chmod 777 admin.p12
 ```
 replace `admin.pem/p12` with the desired admin certificate.
-- i cant figure out how to get this to succeed in if ran inside of the script. someone plz help.
+- i cant figure out how to get the java command to succeed in if ran inside of the script. someone plz help.
 
 ## future plans
 - add a `cozytak` command to simplify launching.
