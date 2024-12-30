@@ -38,7 +38,7 @@ sudo dnf config-manager --set-enabled powertools > /dev/null 2>&1
 
 # Install TAK Server
 echo "Installing TAK Server..."
-sudo dnf install takserver-* -y > /dev/null 2>&1
+sudo dnf install /opt/cozytak/takserver-* -y > /dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Error: Failed to install TAK Server. Exiting."
     exit 1
