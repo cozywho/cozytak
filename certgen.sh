@@ -18,11 +18,12 @@ if [ ! -e "opt/tak/certs/files/$USERNAME.p12" ]; then
     exit 1
 fi
 
-mkdir -p home/$user/cozytak/certs
+mkdir certs
+mkdir certs/$USERNAME
 
 # Copy the required files to the user's folder
-cp "$CERT_DIR/$USERNAME.p12" "$USER_CERT_DIR/"
-cp "$TRUSTSTORE_ROOT" "$USER_CERT_DIR/"
+cp "opt/tak/certs/files/$USERNAME.p12" "certs/$USERNAME/"
+cp "opt/tak/certs/files/truststore-root.p12" "certs/$USERNAME/"
 
 for FILE in "${DEPENDENCY_FILES[@]}"; do
     if [ -e "$COZYTAK_DIR/$FILE" ]; then
