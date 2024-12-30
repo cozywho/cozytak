@@ -115,7 +115,10 @@ sudo -u tak sed -i '/<input _name="stdssl"/s/\(coreVersion="2"\)/\1 auth="x509"/
 # Restart takserver after configuration changes
 echo "Restarting takserver..."
 sudo systemctl restart takserver > /dev/null 2>&1
+sudo cd /opt/tak/certs
+sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
 sleep 15
+sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
 #sudo systemctl status takserver
 #echo "Execute that stupid fucking java command first."
 
