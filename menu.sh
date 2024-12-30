@@ -15,6 +15,7 @@ echo "-----------------------------------"
 echo "3. Certificate Generator (Drag & Drop)"
 echo "-----------------------------------"
 echo "4. Exit"
+echo "-----------------------------------"
 read -p "Enter your choice (1/2/3/4): " choice
 
 case $choice in
