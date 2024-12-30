@@ -5,15 +5,10 @@
 ```bash
 sudo dnf update -y
 reboot
-
 git clone https://github.com/cozywho/cozytak
-
 mv takserver-*.rpm cozytak/ && rm cozytak/takserver.rpm
-
 cd cozytak/
-
 sudo chmod +x *.sh
-
 source menu.sh
 ```
 
