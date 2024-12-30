@@ -1,4 +1,4 @@
-# CozyTAK Installation Guide
+## cozytak install
 
 ## Installation Steps
 
