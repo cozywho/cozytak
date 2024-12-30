@@ -1,14 +1,12 @@
 #!/bin/bash
 
 # cozytak menu 
-
-# Determine the directory the script is being run from
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-echo "Script directory: $SCRIPT_DIR"
-
-# Provide options for Part 1 or Part 2
 echo
 echo "Welcome to cozytak. Get comfortable."
+# Determine the directory the script is being run from
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+echo "Your cozytak directory is: $SCRIPT_DIR"
+echo "-----------------------------------"
 echo "Select an option:"
 echo "-----------------------------------"
 echo "1. New Install - One Server"
