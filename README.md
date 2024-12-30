@@ -1,7 +1,7 @@
 - sudo dnf update -y
 - reboot (fully apply updates, kernel, etc.)
 - git clone https://github.com/cozywho/cozytak
-- mv takserver-*.rpm cozytak/
+- mv takserver-*.rpm cozytak/ && rm cozytak/takserver.rpm
   - replace the placeholder takserver.rpm in cozytak/ with the real one.
 - cd cozytak/
 - sudo chmod +x *.sh 
