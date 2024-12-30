@@ -116,7 +116,7 @@ sudo -u tak sed -i '/<input _name="stdssl"/s/\(coreVersion="2"\)/\1 auth="x509"/
 echo "Restarting takserver."
 sudo systemctl restart takserver > /dev/null 2>&1
 sleep 15
-sudo systemctl status takserver
+#sudo systemctl status takserver
 #echo "Execute that stupid fucking java command first."
 
 #echo "---------------------------------------------------------------------------------------"
