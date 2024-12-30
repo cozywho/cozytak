@@ -1,11 +1,8 @@
 #!/bin/bash
-
-while true; do
-    # Prompt for username
-    read -p "Enter username for the cert: " USERNAME
-
-    # Check for duplicate username
-    if [ -e "$CERT_DIR/$USERNAME.p12" ]; then
+# Prompt for username
+read -p "Enter username for the cert: " USERNAME
+# Check for duplicate username
+    if [ -e "opt/tak/certs/files/$USERNAME.p12" ]; then
         echo "A certificate for '$USERNAME' already exists. Please choose another username."
     else
         break
