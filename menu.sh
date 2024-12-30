@@ -4,6 +4,8 @@
 echo
 echo "Welcome to cozytak. Get comfortable."
 
+SCRIPT_DIR="/opt/cozytak"
+
 # Check if TAK Server is running
 takserver_status=$(sudo systemctl is-active takserver 2>/dev/null)
 if [[ "$takserver_status" == "active" ]]; then
@@ -14,8 +16,7 @@ else
     echo "TAK Server is not running."
 fi
 
-# Determine the directory the script is being run from
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Show menu
 echo "Your cozytak directory is: $SCRIPT_DIR"
 echo "-----------------------------------"
 echo "Select an option:"
