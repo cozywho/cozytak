@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Starting Part 1: New Install - One Server"
+echo "Starting Single Server Install"
 
 # Increase system limit for number of concurrent TCP connections
 #echo "Increasing TCP connection system limit"
