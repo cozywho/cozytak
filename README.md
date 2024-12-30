@@ -1,58 +1,39 @@
-## cozytak install
+# cozytak installation guide
 
-## Installation Steps
+## installation steps
 
-### 1. Update and Reboot
 ```bash
 sudo dnf update -y
 reboot
-```
 
-### 2. Clone the Repository
-```bash
 git clone https://github.com/cozywho/cozytak
-```
 
-### 3. Prepare TAKServer RPM
-```bash
 mv takserver-*.rpm cozytak/ && rm cozytak/takserver.rpm
-```
-> Replace `takserver.rpm` with the actual file.
 
-### 4. Navigate to CozyTAK Directory
-```bash
 cd cozytak/
-```
 
-### 5. Set Script Permissions
-```bash
 sudo chmod +x *.sh
-```
 
-### 6. Run the Menu Script
-```bash
 source menu.sh
 ```
-Follow the menu options to complete the installation.
 
-### 7. Import Certificates
-Import certificates into your browser and access the interface at:
+import certificates into your browser and access the interface at:
 ```
 https://localhost:8443
 ```
 
-### Troubleshooting
-If admin certificate authentication fails, run:
+## troubleshooting
+if admin certificate authentication fails, run:
 ```bash
 sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
 ```
-Replace `admin.pem` with the desired admin certificate.
+replace `admin.pem` with the desired admin certificate.
 
-## Future Plans
-- Add a `cozytak` command to simplify launching.
-- Support arguments like `--install`, `--upgrade`, and `--certgen`.
-- Improve menu organization for repeatable tasks like cert generation.
-- Automate certificate packaging into zips for easier import.
-- Add support for Ubuntu and Docker.
-- Automate adding `admin.p12` to local Firefox.
-- Allow custom passwords during certificate metadata setup.
+## future plans
+- add a `cozytak` command to simplify launching.
+- support arguments like `--install`, `--upgrade`, and `--certgen`.
+- improve menu organization for repeatable tasks like cert generation.
+- automate certificate packaging into zips for easier import.
+- add support for ubuntu and docker.
+- automate adding `admin.p12` to local firefox.
+- allow custom passwords during certificate metadata setup.
