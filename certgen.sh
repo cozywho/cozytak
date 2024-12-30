@@ -23,7 +23,7 @@ while true; do
 done
 
 # Generate the certificate
-/opt/tak/certs/makeCert.sh "$USERNAME"
+./opt/tak/certs/makeCert.sh "$USERNAME"
 
 # Check if the .p12 file was successfully created
 if [ ! -e "$CERT_DIR/$USERNAME.p12" ]; then
