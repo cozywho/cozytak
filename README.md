@@ -27,8 +27,8 @@ replace `admin.pem` with the desired admin certificate.
 ## future plans
 - add a `cozytak` command to simplify launching.
 - support arguments like `--install`, `--upgrade`, and `--certgen`.
-- improve menu organization for repeatable tasks like cert generation.
-- automate certificate packaging into zips for easier import.
+- improve menu organization for repeatable tasks like cert generation. looking at things like whiptail.
+- automate certificate packaging into zips for easier import. super important.
 - add support for ubuntu and docker.
-- automate adding `admin.p12` to local firefox.
-- allow custom passwords during certificate metadata setup.
+- automate adding `admin.p12` to local firefox. idk how to approach this.
+- allow custom passwords during certificate metadata setup. super important.
