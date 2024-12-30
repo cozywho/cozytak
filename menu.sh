@@ -17,7 +17,7 @@ else
 fi
 
 # Show menu
-echo "Your cozytak directory is: $SCRIPT_DIR"
+echo "Your dependencies are located in: $SCRIPT_DIR"
 echo "-----------------------------------"
 echo "Select an option:"
 echo "-----------------------------------"
