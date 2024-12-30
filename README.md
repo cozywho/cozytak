@@ -22,6 +22,7 @@ if admin certificate authentication fails, run:
 sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
 ```
 replace `admin.pem` with the desired admin certificate.
+- i cant figure out how to get this to succeed in if ran inside of the script. someone plz help.
 
 ## future plans
 - add a `cozytak` command to simplify launching.
