@@ -10,6 +10,7 @@ echo "Script directory: $SCRIPT_DIR"
 echo
 echo "Welcome to cozytak. Get comfortable."
 echo "Select an option:"
+echo "-----------------------------------"
 echo "1. New Install - One Server"
 echo "2. Upgrade existing TAK server"
 echo "-----------------------------------"
