@@ -1,15 +1,11 @@
+- sudo dnf update -y
+- reboot (fully apply updates, kernel, etc.)
 - git clone https://github.com/cozywho/cozytak
 - mv takserver-*.rpm cozytak/
   - replace the placeholder takserver.rpm in cozytak/ with the real one.
 - cd cozytak/
+- sudo chmod +x *.sh 
 - source menu.sh
-
-
-
-- sudo dnf update -y
-- reboot (fully apply updates, kernel, etc.)
-- sudo chmod +x /cozytak/*.sh 
-- sudo menu.sh
 - install accordingly
 - import certs to browser
 - https://localhost:8443
