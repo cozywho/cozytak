@@ -11,7 +11,7 @@ fi
 
 # Generate the certificate
 cd /opt/tak/certs
-sudo -u tak ./makeCert.sh "$USERNAME"
+sudo -u tak ./makeCert.sh client "$USERNAME"
 cd /opt/cozytak
 
 # Check if the .p12 file was successfully created
