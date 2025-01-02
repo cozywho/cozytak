@@ -47,7 +47,7 @@ EOF
 # Define variables (replace these with actual values or ensure they are set beforehand)
 HOSTNAME="example-host"
 IPADDY="192.168.1.1"
-PASSWORD="example-password"
+PASSWORD="atakatak"
 
 # Create package_builder.pref
 package_builder="$USER_CERT_DIR/package_builder.pref"
