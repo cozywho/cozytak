@@ -16,7 +16,7 @@ import opt/tak/certs/files/admin.p12 into your browser and access the interface 
 ```
 https://localhost:8443
 ```
--ps you will need to change file permissions unless youre remoted in and winSCPing or something.
+- ps you will need to change file permissions unless youre remoted in and winSCPing or something.
 
 ## future plans
 - firewall rules
