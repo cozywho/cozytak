@@ -37,7 +37,7 @@ cat <<EOF > "$manifest"
     <Parameter name="uid" value="78f3ce32-2d11-4b6e-a668-77551aa081f6" />
   </Configuration>
   <Contents>
-    <Content zipEntry="user.p12" ignore="false" />
+    <Content zipEntry="$USERNAME.p12" ignore="false" />
     <Content zipEntry="truststore-root.p12" ignore="false" />
     <Content zipEntry="package_builder.pref" ignore="false" />
   </Contents>
@@ -62,7 +62,7 @@ cat <<EOF > "$package_builder"
   </preference>
   <preference version="1" name="com.atakmap.app_preferences">
     <entry key="caLocation" class="class java.lang.String">cert/truststore-root.p12</entry>
-    <entry key="certificateLocation" class="class java.lang.String">cert/user.p12</entry>
+    <entry key="certificateLocation" class="class java.lang.String">cert/$USERNAME.p12</entry>
     <entry key="clientPassword" class="class java.lang.String">$PASSWORD</entry>
     <entry key="caPassword" class="class java.lang.String">$PASSWORD</entry>
     <entry key="displayServerConnectionWidget" class="class java.lang.Boolean">true</entry>
