@@ -18,6 +18,9 @@ https://localhost:8443
 ```
 - ps you will need to change file permissions unless youre remoted in and winSCPing or something.
 
+## user cert generation
+- creates a drap & droppable .zip package for ATAK & WinTAK clients.
+
 ## future plans
 - firewall rules
 - support arguments like `--install`, `--upgrade`, and `--certgen`.
