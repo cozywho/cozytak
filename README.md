@@ -28,7 +28,6 @@ sudo chmod 777 admin.p12
 - i cant figure out how to get the java command to succeed in if ran inside of the script. someone plz help.
 
 ## future plans
-- add a `cozytak` command to simplify launching.
 - support arguments like `--install`, `--upgrade`, and `--certgen`.
 - improve menu organization for repeatable tasks like cert generation. looking at things like whiptail.
 - automate certificate packaging into zips for easier import. super important.
