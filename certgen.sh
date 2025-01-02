@@ -74,15 +74,8 @@ cat <<EOF > "$package_builder"
 EOF
 
 # Create a zip file of the user's cert folder
-ZIP_FILE="/opt/cozytak/certs/$USERNAME.zip"
-sudo zip -r "$ZIP_FILE" "$USER_CERT_DIR" >/dev/null
+cd /opt/cozytak/certs
+sudo zip -r "$USERNAME.zip" "$USERNAME" >/dev/null
 
 # Notify the admin
-if [ -e "$ZIP_FILE" ]; then
-    echo "--------------------------------------------------"
-    echo "$USERNAME package created in $ZIP_FILE"
-    echo "--------------------------------------------------"
-else
-    echo "Error: Failed to create certificate package."
-    exit 1
-fi
+echo "$USERNAME".zip created
