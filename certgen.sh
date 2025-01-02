@@ -21,8 +21,8 @@ fi
 mkdir /opt/cozytak/certs/$USERNAME
 
 # Copy the required files to the user's folder
-sudo cp "opt/tak/certs/files/$USERNAME.p12" "certs/$USERNAME/"
-sudo cp "opt/tak/certs/files/truststore-root.p12" "certs/$USERNAME/"
+sudo cp "opt/tak/certs/files/$USERNAME.p12" "/opt/cozytak/certs/$USERNAME/"
+sudo cp "opt/tak/certs/files/truststore-root.p12" "/opt/cozytak/certs/$USERNAME/"
 
 
 
