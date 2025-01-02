@@ -3,7 +3,7 @@
 ## installation steps
 
 ```bash
-sudo dnf update -y
+sudo dnf update -y && sudo dnf install git -y
 reboot
 git clone https://github.com/cozywho/cozytak
 cd cozytak/
