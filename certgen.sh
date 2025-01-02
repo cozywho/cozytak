@@ -10,7 +10,7 @@ read -p "Enter username for the cert: " USERNAME
 done
 
 # Generate the certificate
-./opt/tak/certs/makeCert.sh "$USERNAME"
+sudo -u tak ./opt/tak/certs/makeCert.sh "$USERNAME"
 
 # Check if the .p12 file was successfully created
 if [ ! -e "opt/tak/certs/files/$USERNAME.p12" ]; then
