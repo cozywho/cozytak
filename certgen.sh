@@ -44,9 +44,9 @@ cat <<EOF > "$manifest"
 </MissionPackageManifest>
 EOF
 
-# Define variables (replace these with actual values or ensure they are set beforehand)
-HOSTNAME="example-host"
-IPADDY="192.168.1.1"
+# Define dynamic variables
+HOSTNAME=$(hostname)
+IPADDY=$(hostname -I | awk '{print $1}') # Grabs the first IP from the list
 PASSWORD="atakatak"
 
 # Create package_builder.pref
