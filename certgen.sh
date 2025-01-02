@@ -10,7 +10,9 @@ if [ -e "/opt/tak/certs/files/$USERNAME.p12" ]; then
 fi
 
 # Generate the certificate
-sudo -u tak ./opt/tak/certs/makeCert.sh "$USERNAME"
+cd /opt/tak/certs
+sudo -u tak ./makeCert.sh "$USERNAME"
+cd /opt/cozytak
 
 # Check if the .p12 file was successfully created
 if [ ! -e "/opt/tak/certs/files/$USERNAME.p12" ]; then
