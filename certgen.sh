@@ -78,4 +78,4 @@ cd /opt/cozytak/certs
 sudo zip -r "$USERNAME.zip" "$USERNAME" >/dev/null
 
 # Notify the admin
-echo "$USERNAME".zip created
+echo "$USERNAME".zip created in /opt/cozytak/certs
