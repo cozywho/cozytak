@@ -18,24 +18,17 @@ if [ ! -e "opt/tak/certs/files/$USERNAME.p12" ]; then
     exit 1
 fi
 
-mkdir certs
-mkdir certs/$USERNAME
+mkdir /opt/cozytak/certs/$USERNAME
 
 # Copy the required files to the user's folder
-cp "opt/tak/certs/files/$USERNAME.p12" "certs/$USERNAME/"
-cp "opt/tak/certs/files/truststore-root.p12" "certs/$USERNAME/"
+sudo cp "opt/tak/certs/files/$USERNAME.p12" "certs/$USERNAME/"
+sudo cp "opt/tak/certs/files/truststore-root.p12" "certs/$USERNAME/"
 
-for FILE in "${DEPENDENCY_FILES[@]}"; do
-    if [ -e "$COZYTAK_DIR/$FILE" ]; then
-        cp "$COZYTAK_DIR/$FILE" "$USER_CERT_DIR/"
-    else
-        echo "Warning: Dependency file '$FILE' not found in '$COZYTAK_DIR'."
-    fi
-done
+
 
 # Create a zip file of the user's cert folder
 ZIP_FILE="$COZYTAK_CERTS_DIR/$USERNAME.zip"
-zip -r "$ZIP_FILE" "$USER_CERT_DIR"
+zip -r "/opt/cozytak/certs/$USERNAME.zip" "/opt/cozytak/certs/$USERNAME"
 
 # Notify the admin
 if [ -e "$ZIP_FILE" ]; then
