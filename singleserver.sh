@@ -120,11 +120,11 @@ sudo systemctl restart takserver > /dev/null 2>&1
 #echo "Then manually install the admin cert into Firefox to access the web UI on https://localhost:8443"
 sleep 60
 cd /opt/tak/
-sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem
+sudo java -jar /opt/tak/utils/UserManager.jar certmod -A /opt/tak/certs/files/admin.pem > /dev/null 2>&1
 cd /opt/cozytak/
 # Store script directory value
 # SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # echo "Do that stupid fucking java command in the readme, i cant figure out how to get it to work inside the script."
-echo "Copy admin cert to cozytak folder for user to import."
+echo "Copy admin.p12 cert and import into your browser, then access @ https://localhost:8443."
 # sudo cp /opt/tak/certs/files/admin.pem "$SCRIPT_DIR/admin.pem" && sudo chown $(whoami):$(whoami) "$SCRIPT_DIR/admin.pem"
 # sudo cp /opt/tak/certs/files/admin.p12 "$SCRIPT_DIR/admin.p12" && sudo chmod 777 "$SCRIPT_DIR/admin.p12" 
