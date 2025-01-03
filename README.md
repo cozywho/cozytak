@@ -24,6 +24,7 @@ https://localhost:8443
 
 ## future plans
 - firewall rules
+- hide upgrade option is takserver isnt running
 - support arguments like `--install`, `--upgrade`, and `--certgen`.
 - improve menu organization for repeatable tasks like cert generation. looking at things like whiptail.
 - automate certificate packaging into zips for easier import. super important.
