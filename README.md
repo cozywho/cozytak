@@ -21,7 +21,7 @@ https://localhost:8443
 
 ## user cert generation
 - creates a drap & droppable .zip package for ATAK & WinTAK clients.
-- located in /opt/cozytak/
+- zips located in /opt/cozytak/certs
 
 ## future plans
 - firewall rules
