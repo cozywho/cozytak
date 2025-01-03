@@ -17,6 +17,7 @@ import opt/tak/certs/files/admin.p12 into your browser and access the interface 
 https://localhost:8443
 ```
 - ps you will need to change file permissions unless youre remoted in and winSCPing or something.
+- also remember firewall rules.
 
 ## user cert generation
 - creates a drap & droppable .zip package for ATAK & WinTAK clients.
