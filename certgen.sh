@@ -25,7 +25,7 @@ USER_CERT_DIR="/opt/cozytak/certs/$USERNAME"
 mkdir -p "$USER_CERT_DIR"
 
 # Copy the required files to the user's folder
-sudo cp "/opt/tak/certs/files/$USERNAME.p12" "$USER_CERT_DIR/user.p12"
+sudo cp "/opt/tak/certs/files/$USERNAME.p12" "$USER_CERT_DIR/$USERNAME.p12"
 sudo cp "/opt/tak/certs/files/truststore-root.p12" "$USER_CERT_DIR/"
 touch "$USER_CERT_DIR/manifest.xml" "$USER_CERT_DIR/package_builder.pref"
 
