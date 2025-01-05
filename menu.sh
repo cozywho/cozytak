@@ -6,14 +6,21 @@ echo "Welcome to cozytak. Get comfortable."
 
 SCRIPT_DIR="/opt/cozytak"
 
-# Check if TAK Server is running
-takserver_status=$(sudo systemctl is-active takserver 2>/dev/null)
-if [[ "$takserver_status" == "active" ]]; then
-    takserver_running=true
-    echo "TAK Server is currently running."
+# Check if TAK Server is installed and running
+takserver_installed=false
+takserver_running=false
+
+if systemctl list-units --type=service --all | grep -q "takserver.service"; then
+    takserver_installed=true
+    takserver_status=$(sudo systemctl is-active takserver 2>/dev/null)
+    if [[ "$takserver_status" == "active" ]]; then
+        takserver_running=true
+        echo "TAK Server is currently running."
+    else
+        echo "TAK Server is installed but not running."
+    fi
 else
-    takserver_running=false
-    echo "TAK Server is not running."
+    echo "TAK Server is not installed."
 fi
 
 # Show menu
@@ -24,19 +31,19 @@ echo "-----------------------------------"
 
 option_num=1
 
-if [[ "$takserver_running" == false ]]; then
+if [[ "$takserver_installed" == false ]]; then
     echo "$option_num. New Install - One Server"
     install_option=$option_num
     ((option_num++))
+else
+    echo "$option_num. Upgrade existing TAK server"
+    upgrade_option=$option_num
+    ((option_num++))
+
+    echo "$option_num. Certificate Generator (Drag & Drop)"
+    certgen_option=$option_num
+    ((option_num++))
 fi
-
-echo "$option_num. Upgrade existing TAK server"
-upgrade_option=$option_num
-((option_num++))
-
-echo "$option_num. Certificate Generator (Drag & Drop)"
-certgen_option=$option_num
-((option_num++))
 
 echo "$option_num. Exit"
 exit_option=$option_num
@@ -46,8 +53,8 @@ read -p "Enter your choice: " choice
 
 case $choice in
     $install_option)
-        if [[ "$takserver_running" == true ]]; then
-            echo "Invalid option. New Install is not available because TAK Server is already running."
+        if [[ "$takserver_installed" == true ]]; then
+            echo "Invalid option. New Install is not available because TAK Server is already installed."
             exit 1
         fi
         read -p "Are you ready to proceed? (y/n): " ready
