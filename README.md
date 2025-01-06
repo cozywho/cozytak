@@ -1,5 +1,9 @@
 # cozytak installation guide
 
+prereqs:
+- fresh Rocky 8 machine
+- takserver.rpm from tak.gov on your system
+
 ## installation steps for 'cozytak' command
 
 ```bash
