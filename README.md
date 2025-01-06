@@ -16,6 +16,8 @@ mv takserver-*.rpm /opt/cozytak/ && rm /opt/cozytak/takserver.rpm
 cozytak
 ```
 
+Once 'cozytak' is installed you are ready to install tak server, upgrade existing tak servers, and generate user certificates.
+
 import opt/tak/certs/files/admin.p12 into your browser and access the interface at:
 ```
 https://localhost:8443
