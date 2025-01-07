@@ -15,6 +15,13 @@ else
     echo "TCP connection system limit already set."
 fi
 
+#UBUNTU INSTALL
+#sudo mkdir -p /etc/apt/keyrings
+#sudo curl https://www.postgresql.org/media/keys/ACCC4CF8.asc --output /etc/apt/keyrings/postgresql.asc
+#sudo sh -c 'echo "deb [signed-by=/etc/apt/keyrings/postgresql.asc] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/postgresql.list'
+#sudo apt update
+#sudo apt install /opt/cozytak/takserver_*.deb
+
 # Install EPEL repository
 echo "Installing EPEL repository..."
 sudo dnf install epel-release -y > /dev/null 2>&1
