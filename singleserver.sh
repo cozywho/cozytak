@@ -123,6 +123,7 @@ sudo -u tak ./makeCert.sh client admin > /dev/null 2>&1
 echo "Restarting takserver..."
 sudo systemctl restart takserver > /dev/null 2>&1
 
+sleep 10
 # Modifying CoreConfig.xml
 echo "Modifying CoreConfig.xml..."
 sudo -u tak sed -i '/<input _name="stdssl"/s/\(coreVersion="2"\)/\1 auth="x509"/' "/opt/tak/CoreConfig.xml" > /dev/null
