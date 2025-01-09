@@ -2,67 +2,77 @@
 
 echo "Starting Single Server Install..."
 
-# Increase system limit for number of concurrent TCP connections
-#echo "Increasing TCP connection system limit"
-#echo -e "*		soft	nofile		32768" | sudo tee --append /etc/security/limits.conf > /dev/null
-#echo -e "*		hard	nofile		32768" | sudo tee --append /etc/security/limits.conf > /dev/null
-
-if ! grep -q "soft[[:space:]]*nofile[[:space:]]*32768" /etc/security/limits.conf; then
-    echo "Increasing TCP connection system limit..."
-    echo -e "*\tsoft\tnofile\t32768" | sudo tee --append /etc/security/limits.conf > /dev/null
-    echo -e "*\thard\tnofile\t32768" | sudo tee --append /etc/security/limits.conf > /dev/null
-else
-    echo "TCP connection system limit already set."
+# Check OS type
+OS=""
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    OS=$ID
+    VERSION=$VERSION_ID
 fi
 
-#UBUNTU INSTALL
-#sudo mkdir -p /etc/apt/keyrings
-#sudo curl https://www.postgresql.org/media/keys/ACCC4CF8.asc --output /etc/apt/keyrings/postgresql.asc
-#sudo sh -c 'echo "deb [signed-by=/etc/apt/keyrings/postgresql.asc] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/postgresql.list'
-#sudo apt update
-#sudo apt install /opt/cozytak/takserver_*.deb
+if [ "$OS" == "ubuntu" ]; then
+    echo "Detected OS: Ubuntu"
 
-# Install EPEL repository
-echo "Installing EPEL repository..."
-sudo dnf install epel-release -y > /dev/null 2>&1
+    if ! grep -q "soft[[:space:]]*nofile[[:space:]]*32768" /etc/security/limits.conf; then
+        echo "Increasing TCP connection system limit..."
+        echo -e "*\tsoft\tnofile\t32768" | sudo tee --append /etc/security/limits.conf > /dev/null
+        echo -e "*\thard\tnofile\t32768" | sudo tee --append /etc/security/limits.conf > /dev/null
+    else
+        echo "TCP connection system limit already set."
+    fi
 
-# Add PostgreSQL repository and disable default module
-echo "Adding PostgreSQL repository..."
-sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm > /dev/null 2>&1
-sudo dnf -qy module disable postgresql > /dev/null 2>&1
+    # Ubuntu specific commands
+    echo "Installing PostgreSQL repository for Ubuntu..."
+    sudo mkdir -p /etc/apt/keyrings
+    sudo curl https://www.postgresql.org/media/keys/ACCC4CF8.asc --output /etc/apt/keyrings/postgresql.asc
+    sudo sh -c 'echo "deb [signed-by=/etc/apt/keyrings/postgresql.asc] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/postgresql.list'
+    sudo apt update
+    sudo apt install -y /opt/cozytak/takserver_*.deb
 
-# Update system
-echo "Updating the system (this may take a while)..."
-sudo dnf update -y > /dev/null 2>&1
+elif [ "$OS" == "rocky" ] && [[ "$VERSION" == 8* ]]; then
+    echo "Detected OS: Rocky Linux 8"
 
-# Install Java
-echo "Installing Java..."
-sudo dnf install java-17-openjdk-devel -y > /dev/null 2>&1
+    if ! grep -q "soft[[:space:]]*nofile[[:space:]]*32768" /etc/security/limits.conf; then
+        echo "Increasing TCP connection system limit..."
+        echo -e "*\tsoft\tnofile\t32768" | sudo tee --append /etc/security/limits.conf > /dev/null
+        echo -e "*\thard\tnofile\t32768" | sudo tee --append /etc/security/limits.conf > /dev/null
+    else
+        echo "TCP connection system limit already set."
+    fi
 
-# Enable powertools repository
-echo "Enabling powertools repository..."
-sudo dnf config-manager --set-enabled powertools > /dev/null 2>&1
+    # Rocky specific commands
+    echo "Installing EPEL repository..."
+    sudo dnf install epel-release -y > /dev/null 2>&1
 
-# Install TAK Server
-echo "Installing TAK Server..."
-sudo dnf install /opt/cozytak/takserver-* -y > /dev/null 2>&1
-if [ $? -ne 0 ]; then
-    echo "Error: Failed to install TAK Server. Exiting."
+    echo "Adding PostgreSQL repository..."
+    sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm > /dev/null 2>&1
+    sudo dnf -qy module disable postgresql > /dev/null 2>&1
+
+    echo "Updating the system (this may take a while)..."
+    sudo dnf update -y > /dev/null 2>&1
+
+    echo "Installing Java..."
+    sudo dnf install java-17-openjdk-devel -y > /dev/null 2>&1
+
+    echo "Enabling powertools repository..."
+    sudo dnf config-manager --set-enabled powertools > /dev/null 2>&1
+
+    echo "Installing TAK Server..."
+    sudo dnf install /opt/cozytak/takserver-* -y > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "Error: Failed to install TAK Server. Exiting."
+        exit 1
+    fi
+else
+    echo "Unsupported OS or version. Exiting."
     exit 1
 fi
 
-# Apply SELinux configurations
-echo "Applying SELinux configurations..."
-sudo dnf install checkpolicy -y > /dev/null 2>&1
-cd /opt/tak
-sudo ./apply-selinux.sh && sudo semodule -l | grep takserver > /dev/null 2>&1
-
-# Start and enable TAK Server service
+# Common commands for both Ubuntu and Rocky after daemon reload
 echo "Starting TAK Server service..."
 sudo systemctl daemon-reload > /dev/null 2>&1
 sudo systemctl enable takserver > /dev/null 2>&1 && sudo systemctl start takserver > /dev/null 2>&1
 
-# Verify TAK Server service status
 if systemctl is-active --quiet takserver; then
     echo "TAK Server is running successfully..."
 else
