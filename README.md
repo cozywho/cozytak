@@ -1,10 +1,10 @@
 # cozytak installation guide
 
 prereqs:
-- fresh Rocky 8 machine
-- takserver.rpm from tak.gov on your system
+- fresh Rocky 8 or Ubuntu machine
+- takserver.rpm or takserver.deb from tak.gov on your system
 
-## installation steps for 'cozytak' command
+## installation steps for 'cozytak' command: Rocky 8
 
 ```bash
 sudo dnf update -y && sudo dnf install git -y
@@ -13,6 +13,18 @@ git clone https://github.com/cozywho/cozytak
 cd cozytak/
 source install.sh
 mv takserver-*.rpm /opt/cozytak/ && rm /opt/cozytak/takserver.rpm
+cozytak
+```
+
+## installation steps for 'cozytak' command: Ubuntu
+
+```bash
+sudo apt update -y 
+reboot
+git clone https://github.com/cozywho/cozytak
+cd cozytak/
+source install.sh
+mv takserver_*.deb /opt/cozytak/ && rm /opt/cozytak/takserver.rpm
 cozytak
 ```
 
