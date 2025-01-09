@@ -30,11 +30,9 @@ https://localhost:8443
 - zips located in /opt/cozytak/certs
 
 ## future plans
+- allow custom passwords during certificate metadata setup. super important.
 - firewall rules
-- hide upgrade option is takserver isnt running
 - support arguments like `--install`, `--upgrade`, and `--certgen`.
-- improve menu organization for repeatable tasks like cert generation. looking at things like whiptail.
-- automate certificate packaging into zips for easier import. super important.
+- improve menu organization. looking at things like whiptail.
 - add support for ubuntu and docker.
 - automate adding `admin.p12` to local firefox. idk how to approach this.
-- allow custom passwords during certificate metadata setup. super important.
