@@ -22,12 +22,14 @@ if [ "$OS" == "ubuntu" ]; then
     fi
 
     # Ubuntu specific commands
-    echo "Installing PostgreSQL repository for Ubuntu..."
+    echo "Installing PostgreSQL repo..."
     sudo mkdir -p /etc/apt/keyrings
-    sudo curl https://www.postgresql.org/media/keys/ACCC4CF8.asc --output /etc/apt/keyrings/postgresql.asc
+    sudo curl https://www.postgresql.org/media/keys/ACCC4CF8.asc --output /etc/apt/keyrings/postgresql.asc > /dev/null 2>&1
     sudo sh -c 'echo "deb [signed-by=/etc/apt/keyrings/postgresql.asc] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/postgresql.list'
-    sudo apt update
-    sudo apt install -y /opt/cozytak/takserver_*.deb
+    echo "Updating system..."
+    sudo apt update > /dev/null 2>&1
+    echo "Installing TAK Server..."
+    sudo apt install -y /opt/cozytak/takserver_*.deb > /dev/null 2>&1
 
 elif [ "$OS" == "rocky" ] && [[ "$VERSION" == 8* ]]; then
     echo "Detected OS: Rocky Linux 8"
@@ -41,14 +43,14 @@ elif [ "$OS" == "rocky" ] && [[ "$VERSION" == 8* ]]; then
     fi
 
     # Rocky specific commands
-    echo "Installing EPEL repository..."
+    echo "Installing EPEL..."
     sudo dnf install epel-release -y > /dev/null 2>&1
 
-    echo "Adding PostgreSQL repository..."
+    echo "Adding PostgreSQL..."
     sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm > /dev/null 2>&1
     sudo dnf -qy module disable postgresql > /dev/null 2>&1
 
-    echo "Updating the system (this may take a while)..."
+    echo "Updating system..."
     sudo dnf update -y > /dev/null 2>&1
 
     echo "Installing Java..."
