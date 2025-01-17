@@ -19,7 +19,7 @@ cozytak
 ## installation steps for 'cozytak' command: Ubuntu
 
 ```bash
-sudo apt update -y 
+sudo apt update -y && sudo apt upgrade -y
 reboot
 git clone https://github.com/cozywho/cozytak
 cd cozytak/
