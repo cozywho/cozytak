@@ -46,5 +46,5 @@ https://localhost:8443
 - firewall rules
 - support arguments like `--install`, `--upgrade`, and `--certgen`.
 - improve menu organization. looking at things like whiptail.
-- add support for ubuntu and docker.
+- add support for docker.
 - automate adding `admin.p12` to local firefox. idk how to approach this.
