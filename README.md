@@ -44,6 +44,7 @@ https://localhost:8443
 ## future plans
 - allow custom passwords during certificate metadata setup. super important.
     - Ask for password input before the atakatak step, confirm password, if mismatch: "PASSWORD DIDNT MATCH", if match, continue.
+- tak.gov yum repo addition can greatly help the rocky install. Add that option to remove the need for dependency.
 - firewall rules
     - Maybe a reminder of common rules? Or the default 8443 or something.
 - support arguments like `--install`, `--upgrade`, and `--certgen`. Idk if this matters when the menu is a thing.
