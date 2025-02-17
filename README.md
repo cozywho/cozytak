@@ -1,7 +1,7 @@
 # cozytak installation guide
 
 prereqs:
-- fresh Rocky 8 or Ubuntu machine
+- fresh Rocky 8 or Ubuntu machine. Docker support coming soon.
 - takserver.rpm or takserver.deb from tak.gov on your system
 
 ## installation steps for 'cozytak' utility: Rocky 8
