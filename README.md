@@ -43,8 +43,11 @@ https://localhost:8443
 
 ## future plans
 - allow custom passwords during certificate metadata setup. super important.
+    - Ask for password input before the atakatak step, confirm password, if mismatch: "PASSWORD DIDNT MATCH", if match, continue.
 - firewall rules
-- support arguments like `--install`, `--upgrade`, and `--certgen`.
+    - Maybe a reminder of common rules? Or the default 8443 or something.
+- support arguments like `--install`, `--upgrade`, and `--certgen`. Idk if this matters when the menu is a thing.
 - improve menu organization. looking at things like whiptail.
-- add support for docker.
-- automate adding `admin.p12` to local firefox. idk how to approach this.
+- add support for docker install, allowing 3 options.
+- automate adding `admin.p12` to local firefox. idk how to approach this or if its really necessary.
+    - Seems like too many issues can happen with this based on environment, considering standalone minimal tak server and desktop environemt are 2 valid options. Eh.
