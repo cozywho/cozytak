@@ -1,6 +1,7 @@
 # cozytak installation guide
 
 prereqs:
+- ONLY FOR 5.1 AND BEFORE
 - fresh Rocky 8 or Ubuntu machine. Docker support coming soon.
 - takserver.rpm or takserver.deb from tak.gov on your system
 
